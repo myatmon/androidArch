@@ -30,9 +30,13 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        String userId = getArguments().getString(UID_KEY);
+        /*String userId = getArguments().getString(UID_KEY);
         viewModel = ViewModelProviders.of(this).get(UserProfileViewModel.class);
-        viewModel.init(userId);
+        viewModel.init(userId);*/
+
+        viewModel.getUser().observe(this,user ->{
+
+        });
     }
 
     @Override
