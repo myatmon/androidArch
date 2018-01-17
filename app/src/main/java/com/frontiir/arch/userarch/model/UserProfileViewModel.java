@@ -3,6 +3,8 @@ package com.frontiir.arch.userarch.model;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.frontiir.arch.userarch.repository.UserRepository;
+
 
 /**
  * @author monshein
@@ -12,12 +14,17 @@ import android.arch.lifecycle.ViewModel;
 public class UserProfileViewModel extends ViewModel {
 
     private String userId;
+
+    private UserRepository userRepo;
     //private User user; change LiveData to user
 
     private LiveData<User> user;
 
     public void init(String userId){
-        this.userId = userId;
+        if(this.user != null){
+            return;
+        }
+        user = userRepo.getUser(userId);
     }
 
     public LiveData<User> getUser(){
