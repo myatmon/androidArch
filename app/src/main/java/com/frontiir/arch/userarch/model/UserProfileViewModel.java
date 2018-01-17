@@ -13,14 +13,14 @@ import com.frontiir.arch.userarch.repository.UserRepository;
 
 public class UserProfileViewModel extends ViewModel {
 
-    private String userId;
+    private int userId;
 
     private UserRepository userRepo;
     //private User user; change LiveData to user
 
     private LiveData<User> user;
 
-    public void init(String userId){
+    public void init(int userId){
         if(this.user != null){
             return;
         }
@@ -28,6 +28,11 @@ public class UserProfileViewModel extends ViewModel {
     }
 
     public LiveData<User> getUser(){
+        if(this.user != null){
+            return user;
+         }
+        userId = 1;
+        user = userRepo.getUser(userId);
         return user;
     }
 }

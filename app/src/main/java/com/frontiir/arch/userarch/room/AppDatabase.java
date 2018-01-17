@@ -13,4 +13,5 @@ import com.frontiir.arch.userarch.model.User;
 @Database(entities = {User.class},version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
+
 }
